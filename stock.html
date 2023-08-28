@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sonoma 3.0</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+            font-family: "Audiowide", sans-serif;
+        }
+
+        .outer{
+            width: 100%;
+            height: 100vh;
+            background-image: url('static/background1.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+         .content{
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+            color: white;
+        }
+
+        #chart{
+            height: 300px;
+            width: 50%;
+            top: 90%;
+            transform: translateX(50%);
+
+        }
+
+        h1{
+            font-size: 20px;
+        }
+
+        .but input{
+            width: 200px;
+            padding: 15px 0;
+            text-align: center;
+            margin: 20px 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class = "outer">
+        <div class = "content">
+
+            <form method = "POST">
+                <h1>Stock Name (ex. MSFT): </h1>
+                <input type="text" name="name" value="" required>
+
+                <h1>Anticpated Opening Price: </h1>
+                <input type="text" name="opening" value="" required>
+
+                <h1>Anticpated High Price: </h1>
+                <input type="text" name="high" value="" required>
+
+                <h1>Anticpated Low Price: </h1>
+                <input type="text" name="low" value="" required>
+                <div class = 'but'>
+                    <input type="submit" value="Submit">
+                </div>
+
+            </form>
+
+             <!-- --/>
+            <h1>Stock Name (ex. MSFT): </h1>
+            <form method="POST">
+                <input name="name">
+                <input type="submit">
+            </form>
+
+            <h1>Anticpated Opening Price: </h1>
+            <form method="POST">
+                <input name="opening">
+                <input type="submit">
+            </form>
+
+            <h1>Anticpated High Price:</h1>
+            <form method="POST">
+                <input name="high">
+                <input type="submit">
+            </form>
+
+            <h1>Anticpated Low Price:</h1>
+            <form method="POST">
+                <input name="low">
+                <input type="submit">
+            </form>
+            <>-- -->
+
+
+            <h1>Predicted price: {{data}}</h1>
+
+            <div id="chart" class="chart"/>
+
+        </div>
+    </div>
+</body>
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script type='text/javascript'>
+  var graphs = {{graphJSON | safe}};
+  Plotly.plot('chart',graphs,{});
+</script>
+</html>

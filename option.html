@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sonoma 3.0</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+            font-family: "Audiowide", sans-serif;
+        }
+
+        .outer{
+            width: 100%;
+            height: 100vh;
+            background-image: url('static/background1.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+         .content{
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+            color: white;
+        }
+
+        .but input{
+            width: 200px;
+            padding: 15px 0;
+            text-align: center;
+            margin: 20px 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class = "outer">
+        <div class = "content">
+         <form  method = "post" action = "{{url_for("my_form_post1")}}">
+                <h1>Option price: </h1>
+                <input type="text" name="price" value="" required>
+
+                <h1>Strike price of the Option:  </h1>
+                <input type="text" name="strike" value="" required>
+
+                <h1>Time in days you wish to execute Option: </h1>
+                <input type="text" name="time" value="" required>
+
+
+                <div class = 'but'>
+                    <input type="submit" value="Submit">
+                </div>
+
+            </form>
+
+            <h1>Predicted Option Value: {{opt}}</h1>
+
+
+        </div>
+    </div>
+</body>
+</html>
